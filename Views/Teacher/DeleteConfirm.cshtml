@@ -1,0 +1,45 @@
+﻿@model WebApplication3_Haroon_Shaffiulla_Cumulative.Models.Teacher
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<style>
+    .navlink {
+        display: flex;
+        justify-content: space-between;
+        padding: 2em;
+    }
+
+        .navlink a {
+            font-size: 1.5em;
+        }
+
+    .deleteButton {
+        border: 3px solid #fca311;
+        background-color: #fca311;
+        border-radius: 5px;
+        padding: 1em;
+        color: white;
+        display: block;
+        margin: 40px;
+    }
+
+        .deleteButton:hover {
+            background-color: red;
+            color: white;
+            border: 3px solid red;
+        }
+
+    .fa-exclamation-circle {
+        color: #fca311;
+    }
+</style>
+<nav class="navlink">
+    <a href="/Teacher/Show/@Model.TeacherId">Go Back</a>
+</nav>
+
+<h3>Are you sure you want to delete all information about @Model.TeacherFname @Model.TeacherLname?</h3>
+
+<p><i class="fas fa-exclamation-circle"></i> Data once deleted cannot be recovered!</p>
+<form action="/Teacher/Delete/@Model.TeacherId" method="post">
+    <button class="deleteButton" href="">Delete!</button>
+</form>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebApplication3_Haroon_Shaffiulla_Cumulative.Models.Student>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Students </h2>
+@* A form input asking for the searchKey *@
+<form action="/Student/List" method="get">
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search" />
+</form>
+<span>@Model.Count() Results Found</span>
+@foreach (var Student in Model)
+{
+    <h3>
+        <a href="/Student/Show/@Student.StudentId" />
+        @Student.StudentFname @Student.StudentLname
+    </h3>
+}
+

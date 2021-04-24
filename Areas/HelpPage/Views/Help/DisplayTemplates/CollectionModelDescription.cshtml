@@ -1,0 +1,6 @@
+@using WebApplication3_Haroon_Shaffiulla_Cumulative.Areas.HelpPage.ModelDescriptions
+@model CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}

@@ -1,0 +1,10 @@
+﻿@model WebApplication3_Haroon_Shaffiulla_Cumulative.Models.Student
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.StudentFname @Model.StudentLname</h2>
+<p><b>Student Number : </b>@Model.StudentNumber</p>
+<p><b>Enrolment Date : </b>@Model.StudentEnrolDate</p>
+
+<a style="color: #fca311" href="/Student/List">Go back</a>

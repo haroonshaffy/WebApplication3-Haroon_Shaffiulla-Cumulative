@@ -1,0 +1,23 @@
+﻿@model WebApplication3_Haroon_Shaffiulla_Cumulative.Models.Teacher
+@{
+    ViewBag.Title = "Show";
+}
+<style>
+</style>
+<nav class="navlink">
+    <a href="/Teacher/List">Go back</a>
+    <a class="show-deleteButton" href="/Teacher/DeleteConfirm/@Model.TeacherId"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+</nav>
+
+
+<h2>@Model.TeacherFname @Model.TeacherLname</h2>
+<p>Salary : @Model.TeacherSalary</p>
+<p>Joining Date : @Model.TeacherHireDate</p>
+<h3 style="color:#fca311;">
+    Courses Assigned :
+</h3>
+@foreach (var course in Model.TeacherCourse)
+{
+    <p>@course</p>
+}

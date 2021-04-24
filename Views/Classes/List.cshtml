@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebApplication3_Haroon_Shaffiulla_Cumulative.Models.ClassDetail>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Details of classes</h2>
+<table border="1">
+    <tr>
+        <th style="padding:1em">Class Code</th>
+        <th style="padding:1em">Class Name</th>
+        <th style="padding:1em">Start Date</th>
+        <th style="padding:1em">Finish Date</th>
+        <th style="padding:1em">Teacher Name</th>
+    </tr>
+    @foreach (var detail in Model)
+    {
+        <tr>
+            <td style="padding:0.5em;">@detail.classCode</td>
+            <td style="padding:0.5em;">@detail.className</td>
+            <td style="padding:0.5em;">@detail.startDate</td>
+            <td style="padding:0.5em;">@detail.FinishDate</td>
+            <td style="padding:0.5em;">@detail.teacherFName @detail.teacherlName </td>
+        </tr>
+    }
+</table>
