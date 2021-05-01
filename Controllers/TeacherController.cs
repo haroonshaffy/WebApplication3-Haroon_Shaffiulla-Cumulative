@@ -147,7 +147,49 @@ namespace WebApplication3_Haroon_Shaffiulla_Cumulative.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// This method is called when we want to update the information for a particular teacher.
+        /// </summary>
+        /// <param name="id">PRIMARY KEY OF THE TEACHER</param>
+        /// <returns>Teacher Information</returns>
+
+        //GET :/Teacher/Update/{id}
+        public ActionResult Update(int id)
+        {
+            //Creates an instance of the data controller.
+            TeacherDataController controller = new TeacherDataController();
+
+            // Calling the FindTeacher method
+            Teacher selectedTeacher = controller.FindTeacher(id);
+
+            //Returns the details of the selected teacher
+            return View(selectedTeacher);
+        }
+
+
+        //POST : /Teacher/Update{id}
+        [HttpPost]
+        public ActionResult Update(int id, string TeacherFname, string TeacherLname, Double TeacherSalary)
+        {
+            Teacher TeacherInfo = new Teacher();
+            
+            if (TeacherFname == "" || TeacherLname == "")
+            {
+                return RedirectToAction("InvalidData");
+            }
+            else
+            {
+                TeacherInfo.TeacherId = id;
+                TeacherInfo.TeacherFname = TeacherFname;
+                TeacherInfo.TeacherLname = TeacherLname;
+                TeacherInfo.TeacherSalary = TeacherSalary;
+
+                // Invoking the UpdateTeacher method we defined in the API controller
+                TeacherDataController controller = new TeacherDataController();
+                controller.UpdateTeacher(id, TeacherInfo);
+                return RedirectToAction("/Show/" + id);
+            }
+        }
     }
-
-
 }

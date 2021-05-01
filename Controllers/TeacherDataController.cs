@@ -216,5 +216,39 @@ namespace WebApplication3_Haroon_Shaffiulla_Cumulative.Controllers
             //Closing the connection between the server and DB
             Connection.Close();
         }
+
+        // <summary>
+        /// This method is used when we want to update information about a teacher.
+        /// </summary>
+        /// <param name="id">Primary Key</param>
+        /// <param name="teacherInfo">Teacher's Information</param>
+    
+        [HttpPost]
+        public void UpdateTeacher(int id, [FromBody] Teacher teacherInfo)
+        {
+            //Instance of a connection using MySQL object.
+            MySqlConnection Connection = School.AccessDatabase();
+
+            //Establishes connection between web server and the database
+            Connection.Open();
+
+            //Creating a new SQL command
+            MySqlCommand cmd = Connection.CreateCommand();
+
+            //SQL QUERY to Update 
+            cmd.CommandText = "UPDATE teachers set " +
+                "teacherfname = @fname , teacherlname = @lname, salary = @salary " +
+                "where teacherid = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@fname", teacherInfo.TeacherFname);
+            cmd.Parameters.AddWithValue("@lname", teacherInfo.TeacherLname);
+            cmd.Parameters.AddWithValue("@salary", teacherInfo.TeacherSalary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            //Closing the connection between the server and DB
+            Connection.Close();
+        }
     }
 }

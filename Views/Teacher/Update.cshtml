@@ -1,0 +1,62 @@
+﻿@model WebApplication3_Haroon_Shaffiulla_Cumulative.Models.Teacher
+@{
+    ViewBag.Title = "Update";
+}
+<nav class="navlink">
+    <a href="/Teacher/Show/@Model.TeacherId">Go Back</a>
+</nav>
+<h2>Update a Teacher</h2>
+<form name="newTeacher" method="post" action="/Teacher/Update/@Model.TeacherId" onsubmit="return processForm();">
+    <div class="form-elements">
+        <p id="errorMessage"></p>
+    </div>
+    <div class="form-elements">
+        <label class="newteacher-label" for="TeacheFname">First Name</label>
+        <input type="text" name="TeacherFname" id="TeacherFname" value="@Model.TeacherFname" />
+    </div>
+    <div class="form-elements">
+        <label class="newteacher-label" for="TeacherLname">Last Name</label>
+        <input type="text" name="TeacherLname" id="TeacherLname" value="@Model.TeacherLname" />
+    </div>
+    <div class="form-elements">
+        <label class="newteacher-label" for="EmployeeNumber">Employee Number</label>
+        <p>@Model.EmployeeNumber</p>
+    </div>
+    <div class="form-elements">
+        <label class="newteacher-label" for="Hiring Date">Hiring Date</label>
+        <p>@Model.TeacherHireDate</p>
+    </div>
+
+    <div class="form-elements">
+        <label class="newteacher-label" for="TeacherSalary">Teacher Salary</label>
+        <input type="text" name="TeacherSalary" id="TeacherSalary" value="@Model.TeacherSalary" />
+    </div>
+    <input class="submit-button" type="submit" value="Submit" />
+</form>
+<script>
+    
+    function processForm() {
+        var errorMessage = document.getElementById("errorMessage");
+        fname = document.getElementById('TeacherFname').value;
+        lname = document.getElementById('TeacherLname').value;
+        salary = document.getElementById('TeacherSalary').value;
+        if (!(fname)) {
+            errorMessage.innerHTML = "Please enter first name.";
+            return false;
+        }
+        if (!(lname)) {
+            errorMessage.innerHTML = "Please enter last name.";
+            return false;
+        }
+
+         if (!(salary)) {
+            errorMessage.innerHTML = "Please enter salary";
+            return false;
+        }
+        if (isNaN(salary)) {
+            errorMessage.innerHTML = "Please enter valid salary";
+            return false;
+        }
+    }
+</script>
+
